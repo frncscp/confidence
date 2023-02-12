@@ -15,7 +15,7 @@ P represents average prediction
 
 S´ and P´ are each variable biases
 
-**How it works**
+**How it works:**
 
 Each score and average prediction is extracted from a folder with all positive or all negative class images. 
 
