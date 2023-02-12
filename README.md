@@ -1,5 +1,5 @@
 # efficiency
-Is described as:
+**Is described as:**
 
 -For Positive Classes:
 $E = \frac{(S * {S}')+(P * {P}')}{{S}'+{P}'}$
@@ -7,7 +7,7 @@ $E = \frac{(S * {S}')+(P * {P}')}{{S}'+{P}'}$
 -For Negative Classes:
 $E = \frac{(S * {S}')+(P * {P}')}{{S}'+{P}'}$
 
-Where:
+**Where:**
 
 S represents normalized score (+1 for each image correctly classified, -1 if viceversa) from 0 to 1
 
@@ -15,7 +15,7 @@ P represents average prediction
 
 S´ and P´ are each variable biases
 
-#How it works
+**How it works**
 
 Each score and average prediction is extracted from a folder with all positive or all negative class images. 
 
