@@ -21,4 +21,4 @@ S´ and P´ are each variable biases
 
 Each score and average prediction is extracted from a folder with all positive or all negative class images. 
 
-There's an implementation in this repo (which is a bit slow) that iterates through all models and folders (divided in positive and negative classes), saves the results on a dictionary, and shows them on a graph
+There's a Keras implementation in this repo (which is a bit slow) that iterates through all models and folders (divided in positive and negative classes), saves the results on a dictionary, and shows them on a graph
