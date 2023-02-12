@@ -7,6 +7,8 @@ $E = \frac{(S * {S}')+(P * {P}')}{{S}'+{P}'}$
 -For Negative Classes:
 $E = \frac{(S * {S}')+(P * {P}')}{{S}'+{P}'}$
 
+with a range of [0, 1)
+
 **Where:**
 
 S represents normalized score (+1 for each image correctly classified, -1 if viceversa) from 0 to 1
