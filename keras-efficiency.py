@@ -74,45 +74,5 @@ class Metrics():
         #self.stats['efficiency per MB'] = self.stats['efficiency']/self.stats['model size']
         return self.stats
   #It returns a dictionary with this order:
-  #1. Model
-  #2. Folder
-  #3. Metrics
-
-    
-#final stats = the dictionary returned from get_stats
-#save image = True if user wants to save the image, it'll be saved with os.getcwd() (currrent directory)
-#name = name of the image
-#img_format = format of the image
-#dict results: returns a dict with the average prediction, efficiency and score for all folders if True
-#add more colors if you need to. I made this implementation so the models get the same color.
-def plot_metrics(final_stats, save_image = False, name = 'efficiency_graph', img_format = '.png', dict_results = False):
-    metrics = ['avg_prediction', 'normalized_score', 'efficiency']
-    colors = ['red', 'blue', 'green', 'purple', 'orange', 'brown', 'grey', 'pink', 'yellow', 'black', 'cyan', 'magenta', 'navy', 'olive', 'teal', 'coral', 'maroon', 'indigo', 'turquoise', 'violet', 'crimson', 'chartreuse', 'beige', 'lavender', 'tan']
-    results = {}
-    for metric in metrics:
-        fig, ax = plt.subplots()
-        color_index = 0
-        model_avg_efficiency = {}
-        for model_name, folder_stats in final_stats.items():
-            x = []
-            y = []
-            avg_efficiency = 0
-            for folder_name, metrics in folder_stats.items():
-                x.append(folder_name)
-                y.append(metrics[metric])
-                avg_efficiency += metrics[metric]
-            avg_efficiency /= len(folder_stats)
-            model_avg_efficiency[model_name] = avg_efficiency
-            ax.plot(x, y, c=colors[color_index], label=model_name)
-            color_index = (color_index + 1) % len(colors)
-        results[metric] = model_avg_efficiency
-        ax.legend(fontsize=4)
-        ax.set_xlabel("Folders")
-        ax.set_ylabel(metric)
-        ax.set_title(f"{metric.title()} for Different Folders and Models")
-        plt.xticks(rotation=90)
-        if save_image:
-            plt.savefig(os.path.join(os.getcwd(), name+img_format), dpi=500, bbox_inches='tight')
-        plt.show()
-    if dict_results: 
-        return results 
+  #1. Folder
+  #2. Metrics
