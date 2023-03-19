@@ -2,7 +2,6 @@ import os
 import tensorflow as tf
 from keras.models import load_model
 
-
 #Model dir = /path/to/model.h5, always inside a list
 #Source = /path/to/dataset
 #Dataset Class = either True if all images on the dataset are from the trained class, or False if all the images are anomalous
@@ -44,6 +43,15 @@ class Metrics():
         for model, weight in zip(model_list, weights):
             y_gorrito += tf.cast(model(tf.expand_dims(img/255., 0)), dtype=tf.float32)*weight
         return y_gorrito / len(model_list)
+    
+    @tf.function
+    def preprocess(self, image, size):
+        height, width = size
+        image_dir = os.path.join(self.source, image)
+        img_file = tf.io.read_file(image_dir)
+        img_decode = tf.image.decode_image(img_file, channels=3)
+        resize = tf.image.resize(img_decode,(height, width))
+        return resize
 
     def get_stats(self, weights = []):
         i = 0
@@ -54,9 +62,7 @@ class Metrics():
             print(f'Doing and saving all predictions: {round((i/len(self.listdir))*100,2)}%', end = '\r')
             i+=1
             try: #preprocess the image
-                image_dir = os.path.join(self.source, image)
-                image = cv2.imread(image_dir)
-                resize = tf.image.resize(cv2.cvtColor(image, cv2.COLOR_BGR2RGB),(self.image_width, self.image_height))
+                resize = preprocess(image, (self.image_height, self.image_width))
             except: #you can call later object.non_read_images to know how much data was unused, but the average will take this into account so no worries
                 self.non_read_images += 1
                 continue            
@@ -98,5 +104,3 @@ class Metrics():
 #result_dict = (model.get_stats())
 #print(model.non_read_images)
 #print(model.model_dir)
-
-
