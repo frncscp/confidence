@@ -5,7 +5,7 @@ import itertools
 final_stats = {}
 
 #if you have all your models inside the same folder, if you don't you can change it
-model_dir = ['path/to/models'] 
+model_dir = 'path/to/models' 
 modelos = os.listdir(model_dir)
 
 positive_folders = {'folder1' : r"path/to/folder", 'folder2' : r"path/to/folder"}
