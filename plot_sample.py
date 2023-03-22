@@ -1,4 +1,4 @@
-from keras_efficiency import Metrics
+from tf_efficiency import Metrics
 import matplotlib.pyplot as plt
 import itertools
 
