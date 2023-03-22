@@ -1,6 +1,6 @@
 import os
 import tensorflow as tf
-from keras.models import load_model
+from tensorflow.keras.models import load_model
 
 #Model dir = /path/to/model.h5, always inside a list
 #Source = /path/to/dataset
