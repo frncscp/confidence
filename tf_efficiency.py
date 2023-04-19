@@ -42,7 +42,7 @@ class Metrics():
             weights = [1] * len(model_list)
         for model, weight in zip(model_list, weights):
             y_gorrito += tf.cast(model(tf.expand_dims(img/255., 0)), dtype=tf.float32)*weight
-        return y_gorrito / len(model_list)
+        return y_gorrito / sum(weights)
     
     @tf.function
     def preprocess(self, image, size):
