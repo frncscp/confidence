@@ -1,7 +1,7 @@
 # efficiency
 
 ### For Positive Classes:
-$E = \frac{(S * {S}')+(P * {P}')}{{S}'+{P}'$
+$E = \frac{(S * {S}')+(P * {P}')}{{S}'+{P'}}$
 
 ### For Negative Classes:
 $E = \frac{(S * {S}')+((1-P) * {P}')}{{S}'+{P}'}$
