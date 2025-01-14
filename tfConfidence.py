@@ -87,9 +87,9 @@ class Metrics():
         
         #there are two formulas: one for the positive class, and one for the negative one
         if self.dataset_class:
-            self.stats['efficiency'] = ((self.score_bias*self.stats['normalized_score'])+(self.avg_prediction_bias*self.stats['avg_prediction']))/(self.score_bias + self.avg_prediction_bias)
+            self.stats['confidence'] = ((self.score_bias*self.stats['normalized_score'])+(self.avg_prediction_bias*self.stats['avg_prediction']))/(self.score_bias + self.avg_prediction_bias)
         else:
-            self.stats['efficiency'] = ((self.score_bias*self.stats['normalized_score'])+(self.avg_prediction_bias*(1-self.stats['avg_prediction'])))/(self.score_bias + self.avg_prediction_bias)
+            self.stats['confidence'] = ((self.score_bias*self.stats['normalized_score'])+(self.avg_prediction_bias*(1-self.stats['avg_prediction'])))/(self.score_bias + self.avg_prediction_bias)
         return self.stats
     
   #self.stats returns a dictionary nested with this order:
