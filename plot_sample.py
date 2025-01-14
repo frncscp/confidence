@@ -1,4 +1,4 @@
-from tf_efficiency import Metrics
+from tfConfidence import Metrics
 import matplotlib.pyplot as plt
 import itertools
 
@@ -30,26 +30,26 @@ for modelo in modelos:
         execute_folder(final_stats, model_dir, folder_name, folder_dir, False, modelo)
 
 def plot_metrics(final_stats):
-    metrics = ['avg_prediction', 'normalized_score', 'efficiency']
+    metrics = ['avg_prediction', 'normalized_score', 'confidence']
     colors = ['red', 'blue', 'green', 'purple', 'orange', 'brown', 'grey', 'pink', 'yellow', 'black', 'cyan', 'magenta', 'navy', 'olive', 'teal', 'coral', 'maroon', 'indigo', 'turquoise', 'violet', 'crimson', 'chartreuse', 'beige', 'lavender', 'tan']
     results = {}
     for metric in metrics:
         fig, ax = plt.subplots()
         color_index = 0
-        model_avg_efficiency = {}
+        model_avg_confidence = {}
         for model_name, folder_stats in final_stats.items():
             x = []
             y = []
-            avg_efficiency = 0
+            avg_confidence = 0
             for folder_name, metrics in folder_stats.items():
                 x.append(folder_name)
                 y.append(metrics[metric])
-                avg_efficiency += metrics[metric]
-            avg_efficiency /= len(folder_stats)
-            model_avg_efficiency[model_name] = avg_efficiency
+                avg_confidence += metrics[metric]
+            avg_confidence /= len(folder_stats)
+            model_avg_confidence[model_name] = avg_confidence
             ax.plot(x, y, c=colors[color_index], label=model_name)
             color_index = (color_index + 1) % len(colors)
-        results[metric] = model_avg_efficiency
+        results[metric] = model_avg_confidence
         ax.legend(fontsize=4)
         ax.set_xlabel("Folders")
         ax.set_ylabel(metric)
